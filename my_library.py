@@ -50,6 +50,7 @@ def naive_bayes(full_table, evidence_row, target_column):
   assert target_column in full_table
   assert isinstance(evidence_row, list)
   assert len(evidence_row) == len(up_list_column_names(full_table)) - 1   # - 1 because subtracting off the target
+  
 
   #compute P(target=0|...) by using cond_probs_product, finally multiply by P(target=0) using prior_prob
   target_val = 0
@@ -59,5 +60,5 @@ def naive_bayes(full_table, evidence_row, target_column):
   #do same for P(target=1|...)
   target_val = 1
   p1 = cond_probs_product(full_table, evidence_row, target_column, target_val) * prior_prob(full_table, target_column, target_val)
-
+  return [p0,p1]
 
