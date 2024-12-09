@@ -63,7 +63,7 @@ def naive_bayes(full_table, evidence_row, target_column):
   return [p0,p1]
 
   def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
-  arch_acc_dict = {}  #ignore if not attempting extra credit
+    arch_acc_dict = {}  #ignore if not attempting extra credit
 
   #now loop through architectures
   for arch in architectures:
