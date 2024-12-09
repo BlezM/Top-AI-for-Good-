@@ -62,24 +62,5 @@ def naive_bayes(full_table, evidence_row, target_column):
   p1 = cond_probs_product(full_table, evidence_row, target_column, target_val) * prior_prob(full_table, target_column, target_val)
   return [p0,p1]
 
-  def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
-    arch_acc_dict = {}  #ignore if not attempting extra credit
-
-  #now loop through architectures
-  for arch in architectures:
-    probs = up_neural_net(train_table, test_table, arch, target_column_name)
-    pos_probs = [p for n,p in probs]
-    all_mets = [] #loop through thresholds
-    for t in thresholds:
-      predictions = [1 if pos>=t else 0 for pos in pos_probs]
-      pred_act_list = up_zip_lists(predictions, up_get_column(test_table, target_column_name))
-      mets = metrics(pred_act_list)
-      mets['Threshold'] = t
-      all_mets = all_mets + [mets]
-
-    arch_acc_dict[tuple(arch)] = max([metd['Accuracy'] for metd in all_mets])  #extra credit - uncomment if want to attempt
-
-    print(f'Architecture: {arch}')
-    display(up_metrics_table(all_mets))
-
+  
   return arch_acc_dict
