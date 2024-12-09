@@ -62,4 +62,4 @@ def naive_bayes(full_table, evidence_row, target_column):
   p1 = cond_probs_product(full_table, evidence_row, target_column, target_val) * prior_prob(full_table, target_column, target_val)
   return [p0,p1]
 
-  def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
+  def try_archs(train_table, test_table, target_column_name, architectures, thresholds)
