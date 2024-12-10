@@ -83,3 +83,15 @@ def naive_bayes(full_table, evidence_row, target_column):
     display(up_metrics_table(all_mets))
 
   return arch_acc_dict
+
+def metrics(zipped_list):
+  tp = sum([1 if p==1 and a==1 else 0 for p,a in zipped_list])
+  tn = sum([1 if p==0 and a==0 else 0 for p,a in zipped_list])
+  fp = sum([1 if p==1 and a==0 else 0 for p,a in zipped_list])
+  fn = sum([1 if p==0 and a==1 else 0 for p,a in zipped_list])
+
+  precision = tp/(tp+fp) if (tp+fp)>0 else 0
+  recall = tp/(tp+fn) if (tp+fn)>0 else 0
+  f1 = 2*precision*recall/(precision+recall) if (precision+recall)>0 else 0
+  accuracy = (tp+tn)/len(zipped_list)
+  return {'Precision': round(precision,2), 'Recall': round(recall,2), 'F1': round(f1,2), 'Accuracy': round(accuracy,2)}
