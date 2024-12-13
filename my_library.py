@@ -107,7 +107,7 @@ def run_random_forest(train, test, target, n):
 
   #your code below - copy, paste and align from above
 
-  clf = RandomForestClassifier(n_estimators=11, max_depth=2, random_state=0)   #clf stands for "classifier"
+  clf = RandomForestClassifier(n_estimators=n, max_depth=2, random_state=0)   #clf stands for "classifier"
 
 
   X = up_drop_column(train, target)
